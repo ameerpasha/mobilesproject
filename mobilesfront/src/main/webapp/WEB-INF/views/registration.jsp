@@ -17,16 +17,18 @@
 <label for="txtlastname">enter user lastname</label> <input type="text" name="txtlastname"required class="form-control">
 
 <button type="button" class="btn btn-success">Register</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="button" class="btn btn-danger">cancel</button>
+<button type="button" class="btn btn-danger">cancel</button><br>
+<a href="Mail">Mail</a>
 
 
 
 </div>
-</div>
+
 
 
 
 </form>
+</div>
 </body>
 
 </html>
