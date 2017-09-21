@@ -16,6 +16,10 @@ public class CategoryDaoImpl implements ICategoryDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	public CategoryDaoImpl(SessionFactory sessionFactory2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void saveCategory(Category category) {
 		
 		Session s=sessionFactory.openSession();
@@ -44,7 +48,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 	public boolean delete(Category category) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(category);
+			sessionFactory.openSession().delete(category);
 			return true;
 		}catch(Exception e)
 		{
@@ -57,7 +61,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 	public Category get(int id) {
 		try
 		{
-			return sessionFactory.getCurrentSession().createQuery("from Category where catid=:id",Category.class).setParameter("id",id).getSingleResult();
+			return sessionFactory.openSession().createQuery("from Category where catid=:id",Category.class).setParameter("id",id).getSingleResult();
 		}catch(Exception e)
 		{
 			System.out.println(e);

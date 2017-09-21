@@ -29,7 +29,7 @@ public boolean addUser(User user)
 @Transactional
 public User get(String email) {
 	try {
-		return sessionFactory.openSession().createQuery("from user where emailid=:email",User.class).setParameter("email", email).getSingleResult();
+		return sessionFactory.openSession().createQuery("from User where emailid=:email",User.class).setParameter("email", email).getSingleResult();
 	}
 	catch(Exception e)
 	{

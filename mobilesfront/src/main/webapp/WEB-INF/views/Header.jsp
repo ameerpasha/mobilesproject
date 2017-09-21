@@ -22,7 +22,7 @@
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
 <div class="navbar-header">
-<a class="navbar-brand" href="#">Websitename</a>
+<a class="navbar-brand" href="#">Tring Tring Mobiles</a>
 
 
 </div>

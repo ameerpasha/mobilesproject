@@ -9,7 +9,7 @@ margin:auto;
 
 <body>
 	<div class="container">
-		<h2>carousel example</h2>
+		<h2>Mobiles...@@...</h2>
 		<div id="mycarousel" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
@@ -20,27 +20,27 @@ margin:auto;
 			<div class="carousel-inner" role="listbox" style="width:100%; height:300px !important;"> 
 			
 				<div class="item active">
-					<img src="images/11.jpg" alt="aamir" style="width: 100%";">
+					<img src="images/11.jpg" alt="xperia l" style="width: 40%"; style="hight: 300px";>
 					<div class="carousel-caption">
-						<h3>aamir</h3>
+						<h3>xperia l</h3>
 					</div>
 				</div>
 				<div class="item">
-					<img src="images/22.jpg" alt="pasha" style="width: 100%";">
+					<img src="images/22.jpg" alt="xperia C" style="width: 40%";style="hight: 300px";>
 					<div class="carousel-caption">
-						<h3>pasha</h3>
+						<h3>xperia C</h3>
 					</div>
 				</div>
 				<div class="item">
-					<img src="images/33.jpg" alt="abhi" style="width: 100%";">
+					<img src="images/33.jpg" alt="xperia M" style="width: 40%";" style="hight: 300px";>
 					<div class="carousel-caption">
-						<h3>abhi</h3>
+						<h3>xperia M</h3>
 					</div>
 				</div>
 				<div class="item">
-					<img src="images/44.jpg" alt="pasha" style="width: 100%";">
+					<img src="images/44.jpg" alt="ultra t2" style="width: 40%";" style="hight: 300px";>
 					<div class="carousel-caption">
-						<h3>hgygb</h3>
+						<h3>ultra t2</h3>
 					</div>
 				</div>
 			</div>

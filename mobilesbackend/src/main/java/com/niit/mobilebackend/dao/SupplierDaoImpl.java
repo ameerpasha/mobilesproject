@@ -15,11 +15,16 @@ import com.niit.mobilebackend.model.Supplier;
 public class SupplierDaoImpl implements ISupplierDao {
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	public SupplierDaoImpl(SessionFactory sessionFactory) {
+		super();
+		this.sessionFactory=sessionFactory;
+	}
 
 	public boolean saveorUpdate(Supplier supplier) {
 		try
 		{
-			sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+			sessionFactory.openSession().saveOrUpdate(supplier);
 			return true;
 		}catch(Exception e)
 		{
@@ -32,7 +37,7 @@ public class SupplierDaoImpl implements ISupplierDao {
 	public boolean delete(Supplier supplier) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(supplier);
+			sessionFactory.openSession().delete(supplier);
 			return true;
 		}catch(Exception e)
 		{
@@ -45,7 +50,7 @@ public class SupplierDaoImpl implements ISupplierDao {
 	public Supplier get(int id) {
 		try
 		{
-			return sessionFactory.getCurrentSession().createQuery("from supplier where supplier id=:id",Supplier.class).setParameter("id",id).getSingleResult();
+			return sessionFactory.openSession().createQuery("from Supplier where supplierid=:id",Supplier.class).setParameter("id",id).getSingleResult();
 		}catch(Exception e)
 		{
 			System.out.println(e);
@@ -59,7 +64,7 @@ public class SupplierDaoImpl implements ISupplierDao {
 	public List<Supplier> list() {
 		try
 		{
-			return sessionFactory.getCurrentSession().createQuery("from supplier",Supplier.class).getResultList();
+			return sessionFactory.openSession().createQuery("from Supplier",Supplier.class).getResultList();
 		}catch(Exception e)
 		{
 			System.out.println(e);

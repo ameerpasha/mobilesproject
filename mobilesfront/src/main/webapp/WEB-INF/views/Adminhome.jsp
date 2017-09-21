@@ -32,7 +32,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">products <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li><a href="#">addproducts</a></li>
+<li><a href="AddProduct">addproducts</a></li>
 <li><a href="#">view</a></li>
 
 </ul>     

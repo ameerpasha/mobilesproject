@@ -1,4 +1,4 @@
-package com.niit.frontend.controller;
+   package com.niit.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -32,12 +32,31 @@ public class HomeController {
 		ModelAndView mv=new ModelAndView("adminhome");
 				return "registration";
 	}
+	@RequestMapping("/aboutus")
+	public String showaboutus()
+	{
+		ModelAndView mv=new ModelAndView("mainpage");
+		return "aboutus";
+	}
+	@RequestMapping("/contactus")
+	public String contactus()
+	{
+		ModelAndView mv=new ModelAndView("mainpage");
+		return "contactus";
+	}
 	@RequestMapping("/Welcome")
 	public String showWelcome()
 	{
 		ModelAndView mv=new ModelAndView("mainpage");
 		return "Welcome";
 	}
+	/*@RequestMapping("/AddProduct")
+	 public String showAddProduct()
+	 {
+		 ModelAndView m=new ModelAndView("AddProduct");
+		 
+		 return "AddProduct";
+	 }*/
 	@RequestMapping("Mail")
 	public void showMail()
 	{

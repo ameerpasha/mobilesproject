@@ -1,4 +1,4 @@
-package com.niit.mobilebackend.config;
+ package com.niit.mobilebackend.config;
 
 import java.util.Properties;
 
@@ -14,8 +14,12 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.mobilebackend.dao.CategoryDaoImpl;
+import com.niit.mobilebackend.dao.ICategoryDao;
 import com.niit.mobilebackend.dao.IProductDao;
+import com.niit.mobilebackend.dao.ISupplierDao;
 import com.niit.mobilebackend.dao.ProductDaoImpl;
+import com.niit.mobilebackend.dao.SupplierDaoImpl;
 import com.niit.mobilebackend.model.Category;
 import com.niit.mobilebackend.model.Product;
 import com.niit.mobilebackend.model.Supplier;
@@ -63,7 +67,7 @@ public class ApplicationConfig {
 		
 		
 	}
-	/*@Autowired
+	@Autowired
 	@Bean(name="productDao")
 	public IProductDao getProductDao(SessionFactory sessionFactory)
 	{
@@ -73,7 +77,29 @@ public class ApplicationConfig {
 	@Bean(name="product")
 	public Product getProduct() {
 		return new Product();
-	}*/
+	}
+	@Autowired
+	@Bean(name="categoryDao")
+	public ICategoryDao getCategoryDao(SessionFactory sessionFactory)
+	{
+		return new CategoryDaoImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="category")
+	public Category getCategory() {
+		return new Category();
+	}
+	@Autowired
+	@Bean(name="supplierDao")
+	public ISupplierDao getSupplierDao(SessionFactory sessionFactory)
+	{
+		return new SupplierDaoImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="supplier")
+	public Supplier getSupplier() {
+		return new Supplier();
+	}
 	@Autowired
 	@Bean(name ="transactionmanager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
@@ -81,6 +107,7 @@ public class ApplicationConfig {
 		return transactionManager;
 		
 	}
+	
 	
 
 }
