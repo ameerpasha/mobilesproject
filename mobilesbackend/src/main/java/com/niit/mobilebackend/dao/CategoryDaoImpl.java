@@ -45,29 +45,33 @@ public class CategoryDaoImpl implements ICategoryDao{
 		}
 	}
 
-	public boolean delete(Category category) {
-		try
-		{
-			sessionFactory.openSession().delete(category);
-			return true;
-		}catch(Exception e)
-		{
-			System.out.println(e);
-			return false;
-		}
-		
+	public void delete(Category category) {
+		Session s=sessionFactory.getCurrentSession();
+		System.out.println("i am in dao");
+		Transaction t=s.beginTransaction();
+		s.delete(category);
+		t.commit();
 	}
+		
+		
+	
 
 	public Category get(int id) {
-		try
+		String hql="from Category where catid="+id;
+		Session s=sessionFactory.openSession();
+		System.out.println("i am in get");
+		Transaction t=s.beginTransaction();
+		Query query=s.createQuery(hql);
+		List<Category>cat=query.list();
+		if(cat==null)
 		{
-			return sessionFactory.openSession().createQuery("from Category where catid=:id",Category.class).setParameter("id",id).getSingleResult();
-		}catch(Exception e)
-		{
-			System.out.println(e);
 			return null;
 		}
-		
+		else
+		{
+			System.out.println("List is empty");
+			return cat.get(0);
+		}
 		
 	}
 	

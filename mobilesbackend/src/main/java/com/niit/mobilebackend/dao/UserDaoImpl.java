@@ -17,6 +17,9 @@ import com.niit.mobilebackend.model.User;
 public class UserDaoImpl implements IUserDao {
 @Autowired
 private SessionFactory sessionFactory;
+public UserDaoImpl(SessionFactory sessionFactory2) {
+	// TODO Auto-generated constructor stub
+}
 public boolean addUser(User user)
 {
 	Session s=sessionFactory.openSession();

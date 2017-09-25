@@ -15,11 +15,11 @@ public class ProductTestCase {
 	static Product product;
 	@BeforeClass
 	public static void init() {
-		context=new AnnotationConfigApplicationContext();
+		/*context=new AnnotationConfigApplicationContext();
 		context.scan("com");
 		context.refresh();
 		productDao=(IProductDao)context.getBean("productDao");
-	}
+*/	}
 
 	@Test
 	public void test() {

@@ -33,7 +33,7 @@
 				</tr>
 				<!--  select:dropdown, items:collection ,itemValue: name to listen
  -->
-				<%-- <tr>
+				<tr>
  <td>Category</td>
  <td><form:select path="catid" items="${categoryList}"
  itemValue="catid" itemLabel="catid">
@@ -41,10 +41,10 @@
  </tr>
  <tr>
  <td>Supplier</td>
- <td><form:select path="supplierid" items="${supplieridt}"
- itemValue="suplierid" itemLabel="supplierid">
+ <td><form:select path="supplierid" items="${supplierList}"
+ itemValue="supplierid" itemLabel="supplierid">
  </form:select></td>
- </tr> --%>
+ </tr>
 				<tr>
 					<td><form:label path="img">Select Image:</form:label></td>
 					<td><form:input type="file" path="img" /></td>
@@ -71,9 +71,9 @@
 					<th>Product Id</th>
 					<th>ProductName</th>
 					<th>Price</th>
+					<th>Supplier</th>
+					<th>CAtegory</th>
 					<th>Quantity</th>
-					<th>Category Id</th>
-					<th>Supplier Id</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
@@ -83,11 +83,11 @@
 						<td>${product.prodname}</td>
 						<td>${product.price}</td>
 						<td>${product.quantity}</td>
-						<%-- <td>${product.category.cat}</td>
-  <td>${product.supplier.supplierid}</td> --%>
-						<td><a href="<c:url value='/editproducts${product.prodid}'/>">Edit</a></td>
+						<td>${product.category.catid}</td>
+  <td>${product.supplier.supplierid}</td>
+						<td><a href="<c:url value='/editproduct${product.prodid}'/>">Edit</a></td>
 						<td><a
-							href="<c:url value='/deleteproducts${product.prodid}'/>">Edit</a></td>
+							href="<c:url value='/deleteproduct${product.prodid}'/>">delete</a></td>
 					</tr>
 				</c:forEach>
 

@@ -7,13 +7,13 @@
 </head>
 <body>
 <div class="container">
-<form action="Login" method="post" role="form">
+<form action="perform_login" method="post" role="form">
 <div class="form-group">
 <label for="txtmail"> Enter mail id </label>
 
-<input type="email" name="txtmail"required class="form-control"><br>
+<input type="email" name="username"required class="form-control"><br>
 
-<label for="txtpass"> </label>enter password<input type="password"name="txtpass"required class="form-control"><br>
+<label for="txtpass"> </label>enter password<input type="password"name="password"required class="form-control"><br>
 
 <!-- <input type="submit" value="Register">
 <input type="reset" value="danger">

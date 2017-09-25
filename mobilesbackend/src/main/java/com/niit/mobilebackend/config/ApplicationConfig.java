@@ -18,8 +18,10 @@ import com.niit.mobilebackend.dao.CategoryDaoImpl;
 import com.niit.mobilebackend.dao.ICategoryDao;
 import com.niit.mobilebackend.dao.IProductDao;
 import com.niit.mobilebackend.dao.ISupplierDao;
+import com.niit.mobilebackend.dao.IUserDao;
 import com.niit.mobilebackend.dao.ProductDaoImpl;
 import com.niit.mobilebackend.dao.SupplierDaoImpl;
+import com.niit.mobilebackend.dao.UserDaoImpl;
 import com.niit.mobilebackend.model.Category;
 import com.niit.mobilebackend.model.Product;
 import com.niit.mobilebackend.model.Supplier;
@@ -100,6 +102,20 @@ public class ApplicationConfig {
 	public Supplier getSupplier() {
 		return new Supplier();
 	}
+	@Autowired
+	@Bean(name="UserDao")
+	public IUserDao getUserDao(SessionFactory sessionFactory)
+	{
+		return new UserDaoImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="user")
+	public User getUser()
+	{
+		return new User();
+	}
+	
+	
 	@Autowired
 	@Bean(name ="transactionmanager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {

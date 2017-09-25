@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -85,6 +86,18 @@ public class AdminController {
 		 }
 		 return "redirect:/AddCategory";
 	 }
+		 @RequestMapping(value="/deletecategory{id}")
+		 public String showDeleteCategory(@PathVariable("id") int id,Model model)throws Exception{
+			category=categoryDao.get(id);
+			System.out.println("Category deleted");
+			ModelAndView mv=new ModelAndView("AddCategory");
+			categoryDao.delete(category);
+			mv.addObject("AddCategory",0);
+			System.out.println("delete Id:" + id);
+			return "redirect:/AddCategory";
+			
+		 
+	 }
 	//------------product operations-------------------...............
 	 @RequestMapping("/AddProduct")
 	 public ModelAndView showProduct(Model model)
@@ -134,6 +147,17 @@ public class AdminController {
 		return "AddProduct";
 		 
 	 }
+	 @RequestMapping(value="/deleteproduct{id}")
+	 public String showDeleteProduct(@PathVariable("id") int id,Model model)throws Exception{
+		product=productDao.get(id);
+		System.out.println("product deleted");
+		ModelAndView mv=new ModelAndView("AddProduct");
+		productDao.delete(product);
+		mv.addObject("AddProduct",0);
+		System.out.println("delete Id:" + id);
+		return "redirect:/AddProduct";
+		
+	 }
 	 
 	///-------------------supplier operations--------
 	 /*@RequestMapping("/AddSupplier")
@@ -148,6 +172,33 @@ public class AdminController {
 		 model.addAttribute("supplierList",supplierDao.list());
 		 System.out.println("added supplier details in controller");
 		 return mv;
+	 }
+	 @RequestMapping(value="/addsupplier",method=RequestMethod.POST)
+	 public String addCate(@ModelAttribute("supplier") Supplier sup) {
+		 if(sup.getSupplierid()==0) {
+			 supplierDao.saveorUpdate(sup);
+			 System.out.println("adding of new category in controller");
+			 
+		 
+		 }
+		 else
+		 {
+			 supplierDao.saveorUpdate(supplier);
+			 System.out.println("adds up update method of supplier in controller");
+		 }
+		 return "redirect:/AddSupplier";
+	 }
+	 @RequestMapping(value="/deletesupplier{id}")
+	 public String showDeleteSupplier(@PathVariable("id") int id,Model model)throws Exception{
+		supplier=supplierDao.get(id);
+		System.out.println("Supplier deleted");
+		ModelAndView mv=new ModelAndView("AddSupplier");
+		supplierDao.delete(supplier);
+		mv.addObject("AddSupplier",0);
+		System.out.println("delete Id:" + id);
+		
+		return "redirect:/AddSupplier";
+		
 	 }
 
 }

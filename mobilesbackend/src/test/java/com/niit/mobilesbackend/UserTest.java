@@ -19,10 +19,10 @@ public class UserTest {
 	@BeforeClass
 	public static void init()
 	{
-		context=new AnnotationConfigApplicationContext();
+		/*context=new AnnotationConfigApplicationContext();
 		context.scan("com");
 		context.refresh();
-		userDao=(IUserDao)context.getBean("userDao");
+		userDao=(IUserDao)context.getBean("userDao");*/
 	}
 
 	@Test

@@ -13,18 +13,18 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int catid;
-	private String categoryname;
+	private String catname;
 	public int getCatid() {
 		return catid;
 	}
 	public void setCatid(int catid) {
 		this.catid = catid;
 	}
-	public String getCategoryname() {
-		return categoryname;
+	public String getCatname() {
+		return catname;
 	}
-	public void setCategoryname(String categoryname) {
-		this.categoryname = categoryname;
+	public void setCatname(String catname) {
+		this.catname = catname;
 	}
 
 }

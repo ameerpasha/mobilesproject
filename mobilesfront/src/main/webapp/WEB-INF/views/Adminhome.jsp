@@ -40,14 +40,14 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li><a href="#">add category</a></li>
+<li><a href="AddCategory">add category</a></li>
 <li><a href="#">view</a></li>
 
 </ul>     
 </li><li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Supplier <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li><a href="#">add supplier</a></li>
+<li><a href="AddSupplier">add supplier</a></li>
 <li><a href="#">view</a></li>
 
 </ul>     

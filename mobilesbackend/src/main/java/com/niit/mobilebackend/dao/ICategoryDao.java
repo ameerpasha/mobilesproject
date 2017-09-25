@@ -7,7 +7,7 @@ import com.niit.mobilebackend.model.Category;
 public interface ICategoryDao {
 	public void saveCategory(Category category);
 	public List<Category>getCategories();
-	public boolean delete(Category category);
+	public void delete(Category category);
 	public Category get(int id);
 
 }
