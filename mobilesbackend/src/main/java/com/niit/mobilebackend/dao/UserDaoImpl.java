@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.mobilebackend.model.Product;
 import com.niit.mobilebackend.model.User;
 
 @Repository("userDao")
@@ -61,6 +62,10 @@ public List<User> getAllUsers()
 public boolean deleteUser(User user) {
 	// TODO Auto-generated method stub
 	return false;
+}
+public Product getbyid(int i) {
+	// TODO Auto-generated method stub
+	return null;
 }
 }
 

@@ -62,15 +62,15 @@ public class CategoryDaoImpl implements ICategoryDao{
 		System.out.println("i am in get");
 		Transaction t=s.beginTransaction();
 		Query query=s.createQuery(hql);
-		List<Category>cat=query.list();
-		if(cat==null)
+		List<Category>cate=query.list();
+		if(cate==null)
 		{
 			return null;
 		}
 		else
 		{
 			System.out.println("List is empty");
-			return cat.get(0);
+			return cate.get(0);
 		}
 		
 	}
