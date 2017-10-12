@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body bgColor="blue">
+<!-- <body bgColor="blue"> -->
 <!-- <div class="container">
 <form action="mainpage" method="post" role="form">
 <div class="form group">
@@ -68,15 +68,15 @@
 				</tr>
 				<tr>
 					<td><form:label path="cpassword">confirm password</form:label></td>
-					<td><form:input path="cpassword" type="cpassword" /></td>
+					<td><form:input path="cpassword" type="password" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="phone">phone</form:label></td>
 					<td><form:input path="phone" /></td>
 				</tr>
 				<tr>
-					<td><form:label path="role">role</form:label></td>
-					<td><form:input path="role" /></td>
+					<td><form:label path="emailid">emailid</form:label></td>
+					<td><form:input path="emailid" /></td>
 				</tr>
 				
 				<tr>

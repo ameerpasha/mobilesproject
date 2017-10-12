@@ -63,9 +63,21 @@ public boolean deleteUser(User user) {
 	// TODO Auto-generated method stub
 	return false;
 }
-public Product getbyid(int i) {
-	// TODO Auto-generated method stub
-	return null;
+public User getbyid(int id) {
+	String hql="from User where userid="+id;
+	Session s=sessionFactory.openSession();
+	Transaction tx=s.beginTransaction();
+	Query query=s.createQuery(hql);
+	List<User>us=query.list();
+	if(us==null)
+	{
+		return null;
+	}
+	else
+	{
+		System.out.println("list empty");
+		return us.get(0);
+	}
 }
 }
 

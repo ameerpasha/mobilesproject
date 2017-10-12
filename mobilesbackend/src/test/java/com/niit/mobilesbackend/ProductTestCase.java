@@ -20,7 +20,7 @@ public class ProductTestCase {
 		context.refresh();
 		productDao=(IProductDao)context.getBean("productDao");
 */	}
-
+    
 	@Test
 	public void test() {
 		product=new Product();

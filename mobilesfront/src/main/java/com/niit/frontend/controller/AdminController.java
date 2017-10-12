@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,20 +14,27 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.mobilebackend.dao.ICartDao;
 import com.niit.mobilebackend.dao.ICategoryDao;
 import com.niit.mobilebackend.dao.IProductDao;
 import com.niit.mobilebackend.dao.ISupplierDao;
+import com.niit.mobilebackend.dao.IUserDao;
+import com.niit.mobilebackend.model.Cart;
 import com.niit.mobilebackend.model.Category;
 import com.niit.mobilebackend.model.Product;
 import com.niit.mobilebackend.model.Supplier;
+import com.niit.mobilebackend.model.User;
 
 @Controller
 public class AdminController {
@@ -47,6 +56,8 @@ public class AdminController {
 	
 	@Autowired
 	ISupplierDao supplierDao;
+	
+	
 	
 	@ModelAttribute
 	public Category returnObject1() {
@@ -159,6 +170,16 @@ public class AdminController {
 		
 	 }
 	 
+	 @RequestMapping("/allproducts")
+		public @ResponseBody List<Product> productsall() {
+			System.out.println("inside products all");
+			return productDao.list();
+		}
+
+	
+	
+	 
+	 
 	///-------------------supplier operations--------
 	 /*@RequestMapping("/AddSupplier")
 	 public String showSupplier()
@@ -200,5 +221,7 @@ public class AdminController {
 		return "redirect:/AddSupplier";
 		
 	 }
+	 
+	 
 
 }

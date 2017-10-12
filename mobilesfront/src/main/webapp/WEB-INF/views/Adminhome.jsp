@@ -52,6 +52,10 @@
 
 </ul>     
 </li>
+<ul class="nav navbar-nav navbar-right">
+<li><a href="Welcome"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+
+</ul>
 </ul>
 </div>
 </nav>

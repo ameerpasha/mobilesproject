@@ -14,7 +14,11 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.mobilebackend.dao.CartDaoImpl;
+import com.niit.mobilebackend.dao.CartItemDaoImpl;
 import com.niit.mobilebackend.dao.CategoryDaoImpl;
+import com.niit.mobilebackend.dao.ICartDao;
+import com.niit.mobilebackend.dao.ICartItemDao;
 import com.niit.mobilebackend.dao.ICategoryDao;
 import com.niit.mobilebackend.dao.IProductDao;
 import com.niit.mobilebackend.dao.ISupplierDao;
@@ -22,6 +26,8 @@ import com.niit.mobilebackend.dao.IUserDao;
 import com.niit.mobilebackend.dao.ProductDaoImpl;
 import com.niit.mobilebackend.dao.SupplierDaoImpl;
 import com.niit.mobilebackend.dao.UserDaoImpl;
+import com.niit.mobilebackend.model.Cart;
+import com.niit.mobilebackend.model.CartItem;
 import com.niit.mobilebackend.model.Category;
 import com.niit.mobilebackend.model.Product;
 import com.niit.mobilebackend.model.Supplier;
@@ -34,13 +40,13 @@ import com.niit.mobilebackend.model.User;
 public class ApplicationConfig {
 	@Bean(name= "dataSource")
 	public DataSource getdatasource() {
-		BasicDataSource dataSourse=new BasicDataSource();
-		dataSourse.setDriverClassName("org.h2.Driver");
-		dataSourse.setUrl("jdbc:h2:tcp://localhost/~/Ameer");
-		dataSourse.setUsername("sa");
-		dataSourse.setPassword("");
+		BasicDataSource dataSource=new BasicDataSource();
+		dataSource.setDriverClassName("org.h2.Driver");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/Ameer");
+		dataSource.setUsername("sa");
+		dataSource.setPassword("");
 		System.out.println("data source");
-		return dataSourse;
+		return dataSource;
 	}
 	private Properties getHibernateProperties() {
 		Properties properties=new Properties();
@@ -63,6 +69,9 @@ public class ApplicationConfig {
 		sessionBuilder.addAnnotatedClasses(User.class);
 		sessionBuilder.addAnnotatedClasses(Category.class);
 		sessionBuilder.addAnnotatedClasses(Supplier.class);
+		sessionBuilder.addAnnotatedClasses(Cart.class);
+		sessionBuilder.addAnnotatedClasses(CartItem.class);
+
 
 		System.out.println("session factory");
 		return sessionBuilder.buildSessionFactory();
@@ -103,7 +112,7 @@ public class ApplicationConfig {
 		return new Supplier();
 	}
 	@Autowired
-	@Bean(name="UserDao")
+	@Bean(name="userDao")
 	public IUserDao getUserDao(SessionFactory sessionFactory)
 	{
 		return new UserDaoImpl(sessionFactory);
@@ -114,6 +123,37 @@ public class ApplicationConfig {
 	{
 		return new User();
 	}
+	@Autowired
+	@Bean(name="cartDao")
+	public ICartDao getCartDao(SessionFactory sessionFactory)
+	{
+		return new CartDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="cart")
+	public Cart getCart()
+	{
+		return new Cart();
+		
+	}
+	
+	@Autowired
+	@Bean(name="cartitemDao")
+	public ICartItemDao getCartItemDao(SessionFactory sessionFactory)
+	{
+		return new CartItemDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="cartitem")
+	public CartItem getCartItem()
+	{
+		return new CartItem();
+		
+	}
+	
+	
 	
 	
 	@Autowired

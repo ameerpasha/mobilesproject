@@ -1,75 +1,64 @@
 package com.niit.mobilebackend.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
 @Entity
-@Table
-@Component
+@Table(name="cart")
 
-public class Cart {
+public class Cart  implements java.io.Serializable{
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	private int quantity;
-	private int price;
-	public int getId() {
-		return id;
+	private int cartid;
+	private int qty;
+	private int grandtotal;
+	
+	@OneToOne(cascade=CascadeType.PERSIST)
+	private User user;
+	
+	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="cart",fetch=FetchType.EAGER)
+	private List<CartItem> cartitems=new ArrayList<CartItem>();
+	
+	public int getCartid() {
+		return cartid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCartid(int cartid) {
+		this.cartid = cartid;
 	}
-	public int getQuantity() {
-		return quantity;
+	public int getQty() {
+		return qty;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQty(int qty) {
+		this.qty = qty;
 	}
-	public int getPrice() {
-		return price;
+	public int getGrandtotal() {
+		return grandtotal;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setGrandtotal(int grandtotal) {
+		this.grandtotal = grandtotal;
 	}
-	public Product getCartuser() {
-		return cartuser;
+	public User getUsers() {
+		return user;
 	}
-	public void setCartuser(Product cartuser) {
-		this.cartuser = cartuser;
+	public void setUsers(User users) {
+		this.user = users;
 	}
-	public int getUserid() {
-		return userid;
+	public List<CartItem> getCartitems() {
+		return cartitems;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setCartitems(List<CartItem> cartitems) {
+		this.cartitems = cartitems;
 	}
-	public Product getCartproduct() {
-		return cartproduct;
-	}
-	public void setCartproduct(Product cartproduct) {
-		this.cartproduct = cartproduct;
-	}
-	public int getProdid() {
-		return prodid;
-	}
-	public void setProdid(int prodid) {
-		this.prodid = prodid;
-	}
-	@ManyToOne
-	@JoinColumn(name="userid",insertable=false,updatable=false)
-	private Product cartuser;
-	private int userid;
-	@ManyToOne
-	@JoinColumn(name="prodid",insertable=false,updatable=false)
-	private Product cartproduct;
-	private int prodid;
-	}
-
-
+	
+}

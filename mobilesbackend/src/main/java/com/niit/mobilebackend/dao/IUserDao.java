@@ -11,6 +11,6 @@ public interface IUserDao {
 	public User get(String email);
 	public List<User>getAllUsers();
 	//public User getbyid(int i);
-	public Product getbyid(int i);
+	public User getbyid(int id);
 
 }
