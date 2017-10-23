@@ -137,12 +137,13 @@ public String showCart(@PathVariable Integer id, ModelMap model) {
 }
 */
 
-@RequestMapping(value = "/deletecart/{id}")
-public String showDeleteCart(@PathVariable("id") String id, Model model) throws Exception {
+@RequestMapping(value = "{id}/deletecart/{pid}")
+public String showDeleteCart(@PathVariable("id") String id, @PathVariable("pid") String pid, Model model) throws Exception {
 
 	int i = Integer.parseInt(id);
-
-	cart =cartDAO.getbyid(i);
+	int j=Integer.parseInt(pid);
+	System.out.println("user id: "+i+" cart id: "+j);
+	cart =cartDAO.get(j,i);
 
 	System.out.println("cart delete");
 
@@ -152,7 +153,7 @@ public String showDeleteCart(@PathVariable("id") String id, Model model) throws 
 	//mv.addObject("viewproducts", 0);
 
 	System.out.println("delete Id:" + id);
-	return "addtocart";
+	return "redirect:/cart";
 	//return mv;
 
 }
@@ -228,7 +229,7 @@ public String addCart(@PathVariable Integer id, Principal principal,ModelMap mod
     	 cartItemDAO.addCartItem(cartItem);
      }
      
-     model.addAttribute("mycartList", cartItemDAO.getAll());
+     model.addAttribute("mycartList", cartDAO.listcartproducts(user.getUserid()));
 			return "cart";
 }
 	     
@@ -236,11 +237,11 @@ public String addCart(@PathVariable Integer id, Principal principal,ModelMap mod
 	
 
 
-	/*@RequestMapping("/{id}/ViewDetails")
+	@RequestMapping("/{id}/viewDetails")
 			public String showDetails(@PathVariable Integer id, ModelMap model) {
 				model.addAttribute("product", productDAO.get(id));
-				return "ViewDetails";
-			}*/
+				return "viewDetails";
+			}
 		
 			/*@RequestMapping("/allproducts")
 			public @ResponseBody List<Product> productsall() {

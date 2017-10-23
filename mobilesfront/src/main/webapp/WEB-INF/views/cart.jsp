@@ -17,9 +17,9 @@ MY CART<br>
 			</tr>
 			<c:forEach items="${mycartList}" var="cart">
 				<tr>
-					<td>${cart.cartitemid}</td>
+					<td>${cart.cartid}</td>
 					<%-- <td>${cart.cartproduct.description}</td> --%>
-					<td>${cart.quantity}</td>
+					<td>${cart.qty}</td>
 					<td>${cart.grandtotal}</td>
 					<td><a href="<c:url value='cartupdate${product.prodid}'/>"><span
 							class="glyphicon glyphicon-pencil"></span></a></td>

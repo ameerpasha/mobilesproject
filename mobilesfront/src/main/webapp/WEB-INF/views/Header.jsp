@@ -61,7 +61,7 @@
 							class="glyphicon glyphicon-login"></span>LOGIN</a></li>
 				</c:when>
 				<c:when test="${not empty loggedInUser }">
-					<li><a href="addtocart">Cart</a></li>
+					<li><a href="cart">Cart</a></li>
 					<li><a href="${loggedInUserId}viewProfile">View Profile</a></li>
 					<div class="media" style="float:left;">
 					<img src="/mobilesfront/pics/${loggedInUser}.jpg" class="media-object" style="Width:80px"></img>

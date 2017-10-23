@@ -107,12 +107,7 @@ public class HomeController {
 	}
 	 
 	
-	@RequestMapping("/{id}/viewDetails")
-	public String showDetails(@PathVariable Integer id,ModelMap model)
-	{
-		model.addAttribute("product",productDAO.get(id));
-		return "viewDetails";
-	}
+	
 	 
 	/*@RequestMapping("/AddProduct")
 	 public String showAddProduct()
