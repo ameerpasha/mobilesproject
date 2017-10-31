@@ -50,6 +50,7 @@
 				
 					<td><form:label path="username">user name</form:label></td>
 					<td><form:input path="username"/></td>
+					<td><span><form:errors path="username" cssStyle="color:#ff0000;"/></span>
 				</tr>
 					<tr>
 						<td><form:label path="firstname">first name</form:label></td>
@@ -64,11 +65,13 @@
 				<tr>
 					<td><form:label path="password">password</form:label></td>
 					<td><form:input path="password" type="password" /></td>
+					<td><span><form:errors path="password" cssStyle="color:#ff0000;"/></span>
 					
 				</tr>
 				<tr>
 					<td><form:label path="cpassword">confirm password</form:label></td>
 					<td><form:input path="cpassword" type="password" /></td>
+					<td><span><form:errors path="cpassword" cssStyle="color:#ff0000;"/></span>
 				</tr>
 				<tr>
 					<td><form:label path="phone">phone</form:label></td>
@@ -77,6 +80,7 @@
 				<tr>
 					<td><form:label path="emailid">emailid</form:label></td>
 					<td><form:input path="emailid" /></td>
+					<td><span><form:errors path="emailid" cssStyle="color:#ff0000;"/></span>
 				</tr>
 				
 				<tr>

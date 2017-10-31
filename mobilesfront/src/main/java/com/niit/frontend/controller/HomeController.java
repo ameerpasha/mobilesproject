@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -129,32 +130,21 @@ public class HomeController {
 	}*/
 	
 	@RequestMapping(value="/addus",method=RequestMethod.POST)
-	public String addUser(@ModelAttribute("user") User user,BindingResult result,HttpServletRequest request, HttpSession session)throws IOException {
+	public String addUser(@Valid @ModelAttribute("user") User user,BindingResult result,HttpServletRequest request, HttpSession session,Model model)throws IOException {
 		System.out.println(user.getCpassword());
 		System.out.println(user.getpassword());
 		System.out.println(user.getEmailid());
-		MultipartFile image=user.getImg();
-		 Path path;
-		 path=Paths.get("C:/Users/MD.AMEERPASHA/git/mobilesfront/src/main/Webapp/pics/" + user.getUsername() + ".jpg");
-		 System.out.println("Path=" + path);
-		 System.out.println("file name" + user.getImg().getOriginalFilename());
-		 if(image !=null && !image.isEmpty());
-		 {
-			 try
-			 {
-				 image.transferTo(new File(path.toString()));
-				 System.out.println("image saved in" + path.toString());
-			 }
-			 catch(Exception e) {
-				 e.printStackTrace();
-				 System.out.println("image not saved");
-			 }
-		 }
+		if(result.hasErrors()) {
+			return "registration";
+		}
+		else {
+			
+		
 		user.setEnabled("true");
 		user.setRole("ROLE_USER");
 		if(user.getCpassword().equals(user.getPassword())){
 			userDao.addUser(user);
-		}
+		
 		session = request.getSession(false);
 		session.setAttribute("email1",user.getEmailid());
 		session.setAttribute("loggedInUser", user.getUsername());
@@ -172,8 +162,32 @@ public class HomeController {
 		email.setSubject(subject);
 		email.setText(message);
 		mailsender.send(email);
+		MultipartFile image=user.getImg();
+		 Path path;
+		 path=Paths.get("C:/Users/MD.AMEERPASHA/git/mobilesfront/src/main/Webapp/pics/" + user.getUsername() + ".jpg");
+		 System.out.println("Path=" + path);
+		 System.out.println("file name" + user.getImg().getOriginalFilename());
+		 if(image !=null && !image.isEmpty());
+		 {
+			 try
+			 {
+				 image.transferTo(new File(path.toString()));
+				 System.out.println("image saved in" + path.toString());
+			 }
+			 catch(Exception e) {
+				 e.printStackTrace();
+				 System.out.println("image not saved");
+			 }
+		 }
 		return "login";
 	}
+		else {
+			model.addAttribute("errMsg", "Both the passwords are not matching");
+			return "registration";
+		}
+	}
+	}
+
 	@RequestMapping("/Signout")
 	public ModelAndView showLogout()
 	{

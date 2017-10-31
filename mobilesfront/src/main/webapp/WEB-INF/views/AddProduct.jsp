@@ -5,6 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+table{
+   border-color:red }
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr:hover {background-color: #f5f5f5}
+th {
+    padding: 10px;
+    }
+td {
+    padding:5px;
+    }    
+    </style>
 </head>
 <body>
 	
@@ -66,7 +81,7 @@
 		<!--    core tags,if or choose,$ expresssion language
  -->
 		<c:if test="${!empty productList}">
-			<table class="tg">
+			<table class="tg" align="center">
 		<tr>
 					<th>Product Id</th>
 					<th>ProductName</th>

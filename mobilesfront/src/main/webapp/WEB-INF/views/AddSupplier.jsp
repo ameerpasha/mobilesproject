@@ -6,6 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+table{ border-color:red }
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr:hover {background-color: #f5f5f5}
+
+th, td {
+    padding: 10px;
+}
+</style>
 </head>
 <body>
 	
@@ -72,7 +84,7 @@
 		<!--    core tags,if or choose,$ expresssion language
  -->
 		<c:if test="${!empty supplierList}">
-			<table class="tg">
+			<table class="tg" align="center">
 		<tr>
 					<th>supplier Id</th>
 					<th>supplierName</th>
