@@ -11,7 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -113,9 +115,11 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	@NotEmpty(message="Product name cannot be empty")
 	private String prodname;
+	@Min(message="Quantity cannot be zero", value = 1)
 	private int quantity;
+	@Min(message="Price cannot be zero",value = 1)
 	private int price;
 
 }
